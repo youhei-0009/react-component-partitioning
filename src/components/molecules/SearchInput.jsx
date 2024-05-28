@@ -13,8 +13,8 @@ export const SearchInput = () => {
                 </SButtonWrapper>
             </SContainer>
         </>
-    )
-}
+    );
+};
 
 const SContainer = styled.div`
     display: flex;
