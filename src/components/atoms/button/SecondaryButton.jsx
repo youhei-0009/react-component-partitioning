@@ -1,11 +1,12 @@
+import React from "react";
 import styled from "styled-components";
 import { BaseButton } from "./BaseButton";
 
 export const SecundaryButton = (props) => {
-  const { children } = props;
+  const { children, onClick } = props;
   return (
     <>
-      <SButton>{children}</SButton>
+      <SButton onClick={onClick}>{children}</SButton>
     </>
   );
 };
