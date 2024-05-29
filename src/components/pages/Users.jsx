@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
-import { useLocation } from "react-router-dom";
+
 import { SecundaryButton } from "../atoms/button/SecondaryButton";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
+//import { useContext } from "react";
+//import { UserContext } from "../../providers/UserProvider";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { userState } from "../../store/userState";
 
 const users = [...Array(10).keys()].map(((val) => {
     return {
@@ -21,7 +23,9 @@ const users = [...Array(10).keys()].map(((val) => {
 }));
 
 export const Users = () => {
-    const { userInfo, setUserInfo } = useContext(UserContext);
+    // const { userInfo, setUserInfo } = useContext(UserContext);
+    const [ userInfo, setUserInfo ] = useRecoilState(userState);
+    //const setUserInfo = useSetRecoilState(userState);
 
     const onClickSwitch = () => {
         setUserInfo({ isAdmin: !userInfo.isAdmin});
