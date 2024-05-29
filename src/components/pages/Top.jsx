@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { SecundaryButton } from "../atoms/button/SecondaryButton";
+import { UserContext } from "../../providers/UserProvider";
 
 export const Top = () => {
     const history = useNavigate();
-    const onClickAdmin = () => history("/users",{state: {isAdmin: true}});
-    const onClickGeneral = () => history("/users",{state: {isAdmin: false}});
+    const { setUserInfo } = useContext(UserContext);
+    const onClickAdmin = () => {
+        setUserInfo({ isAdmin: true });
+        history("/users");
+    };
+    const onClickGeneral = () => {
+        setUserInfo({isAdmin: false});
+        history("/users");
+    };
     return (
         <SContainer>
             <h2>TOP page</h2>
